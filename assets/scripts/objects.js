@@ -8,8 +8,8 @@ let person = {
 }
 
 // person.greet()
+delete person.age
 
-person.age = 31
 person.isAdmin = true
 
 console.log(person);
