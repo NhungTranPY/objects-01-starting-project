@@ -1,28 +1,31 @@
-const movieList = document.getElementById('movie-list')
+const addMovieBtn = document.getElementById('add-movie-btn')
+const searchBtn = document.getElementById('search-btn')
 
-movieList.style.backgroundColor = 'red'
-movieList.style.display = 'block'
+const movies = []
 
-const userChosenKeyName = 'level'
+const addMovieHandler = () => {
+    const title = document.getElementById('title').value
+    const extraName = document.getElementById('extra-name').value
+    const extraValue = document.getElementById('extra-value').value
 
-let person = { 
-    'first name': "Max",
-    age: 30,
-    hobbies: ['Sports', 'Cooking'],
-    [userChosenKeyName]: '...',
-    greet: function() {
-        alert('Hi there')
-    },
-    1.5: 'Hello'
+    if (
+        title.trim() === '' ||
+        extraName.trim() === '' ||
+        extraValue.trim() === ''
+    ) {
+        return
+    }
+
+    const newMovie = {
+        info: {
+            title,
+            [extraName]: extraName,
+        },
+        id: Math.random()
+    }
+
+    movies.push(newMovie)
+    console.log(newMovie);
 }
 
-// person.greet()
-delete person.age
-person.isAdmin = true
-
-const keyName = 'first name'
-
-console.log(person[keyName]); // Max
-console.log(person['first name']); // Max
-console.log(person[1.5]) // Hello, console.log(person['1.5']) is also work
-console.log(person);
+addMovieBtn.addEventListener('click', addMovieHandler)
